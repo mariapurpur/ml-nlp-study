@@ -1,0 +1,12 @@
+export type Level=1|2|3|4|5;
+export type CareerLevel='junior'|'strong-junior';
+export type QuestionType='single'|'multi'|'text';
+export type Topic={id:string;title:string;track:string;description:string;level:Level;careerLevel:CareerLevel;duration:string;prereq?:string[];tags:string[]};
+export type Card={id:string;topicId:string;front:string;back:string;hint?:string;level:Level;careerLevel:CareerLevel};
+export type QuizQuestion={id:string;topicId:string;type:QuestionType;prompt:string;options?:string[];answer:string|string[];explanation:string;level:Level;careerLevel:CareerLevel};
+export type CodingTask={id:string;category:string;topicId:string;title:string;prompt:string;starter?:string;solution:string;tests:string[];level:Level;careerLevel:CareerLevel};
+export type InterviewQuestion={id:string;category:string;question:string;tip:string};
+export type CardState={seen:number;correct:number;streak:number;interval:number;ease:number;due:number;lastQuality:number};
+export type SkillState={mastery:number;streak:number;attempts:number;correct:number;level:number;updated:number};
+export type CardSession={date:string;cardIds:string[];startedAt:number;completedAt?:number;elapsedMs?:number;mode:'daily'|'topic'|'random';topicId?:string;count:number;rememberedPercent?:number;};
+export type Progress={completedTopics:string[];completedTasks:string[];cardStats:Record<string,CardState>;quizHistory:{date:string;topicId:string;score:number;total:number;difficulty:number;careerLevel:CareerLevel}[];answers:Record<string,string>;interviewSeen:string[];streak:{last:string;days:number};skills:Record<string,SkillState>;taskAttempts:Record<string,{runs:number;passed:number;lastRun:number;lastOutput:string}>;careerLevel:CareerLevel;dailyGoal:number;cardSessions:CardSession[];settings:{dailyGoalMinutes:number};};
